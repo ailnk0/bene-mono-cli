@@ -3,6 +3,7 @@ import path from 'path';
 
 function newCommand(projectName: string): void {
   const projectPath = path.join(process.cwd(), projectName);
+  const templateRootPath = path.join(__dirname, '..', '..', 'templates', 'root');
 
   console.log(`Creating a new project in ${projectPath}...`);
 
@@ -37,6 +38,13 @@ function newCommand(projectName: string): void {
     path.join(projectPath, 'pnpm-workspace.yaml'),
     workspaceYamlContent
   );
+
+  // 5. 템플릿 파일 복사 (eslintrc, prettierrc, tsconfig.base.json 등)
+  fs.readdirSync(templateRootPath).forEach(file => {
+    const srcFilePath = path.join(templateRootPath, file);
+    const destFilePath = path.join(projectPath, file);
+    fs.copyFileSync(srcFilePath, destFilePath);
+  });
 
   console.log('✅ Project created successfully!');
   console.log('To get started:');

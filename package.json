@@ -1,0 +1,29 @@
+{
+  "name": "bene-mono-cli",
+  "version": "0.1.0",
+  "description": "A CLI to generate pnpm-based monorepos",
+  "main": "lib/index.js",
+  "bin": {
+    "bene-mono-cli": "./bin/bene-mono-cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "monorepo",
+    "pnpm",
+    "generator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "typescript": "^5.8.3"
+  }
+}
